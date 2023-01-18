@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   login(){
     this.usersServise.login(this.username, this.password).subscribe((user: User)=>{
       if(user){
-        localStorage.setItem('user', user.username);
+        localStorage.setItem('user',JSON.stringify(user));
          this.ruter.navigate(['/user']);
       }
       else{

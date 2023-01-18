@@ -45,7 +45,6 @@ router.route('/register').post((req, res)=>{
 
 router.use('/users', userRouter);
 
-router.use('/login', userRouter);
 
 app.use('/', router);
 
