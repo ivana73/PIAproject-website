@@ -4,10 +4,14 @@ import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import user from './model/user';
+import userRouter from './routers/user.router';
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+    credentials:true,
+    origin:["http://localhost:4200"]
+}));
 app.use(bodyParser.json());
 
 mongoose.connect('mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.6.2');
@@ -39,5 +43,10 @@ router.route('/register').post((req, res)=>{
     })
 });
 
-app.get('/', (req, res) => res.send('Hello World!'));
+router.use('/users', userRouter);
+
+router.use('/login', userRouter);
+
+app.use('/', router);
+
 app.listen(4000, () => console.log(`Express server running on port 4000`));
