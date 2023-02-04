@@ -20,7 +20,15 @@ let User = new Schema({
     },
     mejl: {
         type: String
-    }
+    },
+    tip: {
+        type: String
+    },   
+    nazivOrganizacije: {type: String},
+    adresaSedistaOrg: {type: String},
+    matBrOrg: {type: Number},
+    odobren: {type: Number},
+    slika: {type: String},
 
 });
 

@@ -5,4 +5,10 @@ export class User{
   password: string;
   telefon: string;
   mejl: string;
+  tip: string;
+  nazivOrganizacije: string;
+  adresaSedistaOrg: string;
+  matBrOrg: number;
+  dobren: number;
+  slika: string;
 }

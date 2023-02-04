@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from '../models/user.model';
-import { UsersService } from '../users.service';
+import { UcesnikService } from '../servisi/ucesnik.service';
+import { UsersService } from '../servisi/users.service';
 
 @Component({
   selector: 'app-users',
@@ -9,13 +11,17 @@ import { UsersService } from '../users.service';
 })
 export class UsersComponent implements OnInit {
 
-  constructor(private korisnikServis: UsersService) { }
+  constructor(private router: Router, private ucesnikService: UcesnikService) { }
 
   ngOnInit(): void {
-    this.ulogovan = JSON.parse(localStorage.getItem("user"))
-
+    this.korisnik = JSON.parse(localStorage.getItem("user"));
   }
-  useri: User[]
-  ulogovan: User
+
+  korisnik:User;
+
+  odjaviSe(){
+    localStorage.clear();
+    this.router.navigate(['/']);
+  }
 
 }

@@ -5,6 +5,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import user from './model/user';
 import userRouter from './routers/user.router';
+import { UserController } from './controllers/user.controller';
 
 const app = express();
 
@@ -14,7 +15,7 @@ app.use(cors({
 }));
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.6.2');
+mongoose.connect('mongodb://127.0.0.1:27017/umetnost');
 
 const conn = mongoose.connection;
 

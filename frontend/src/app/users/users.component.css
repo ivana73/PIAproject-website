@@ -1,0 +1,149 @@
+.tabela1{
+  margin: auto;
+  padding: 5px;
+  justify-content: center;
+  text-align: center;
+  width: 50%;
+}
+.tabela{
+  margin: auto;
+  padding: 10px;
+  justify-content: center;
+  text-align: center;
+  background-color: rgb(209, 198, 198);
+  margin: 5px;
+}
+
+.polja{
+  width: 100px;
+}
+
+h2{
+  text-align: center;
+}
+
+img{
+  margin: 3px 3px 3px 3px;
+  width:30%;
+  height:75%;
+}
+
+.boja{
+  background-color: rgb(158, 154, 154);
+  height: 100px;
+}
+
+h5{
+  font-size: 15px;
+  display: inline;
+}
+
+h3{
+  text-align: center;
+}
+
+button{
+  background-color:green;
+  display: inline;
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+.greske{
+  color:red;
+  justify-content: center;
+  text-align: center;
+
+}
+
+input[type="text"]{
+  display: inline;
+  width: 95px;
+}
+input[type="number"]{
+  display: inline;
+  width: 40%;
+}
+
+.lokacija {
+  padding: 0 7px;
+}
+
+.dugme {
+  padding: 0 7px;
+}
+
+.bottom {
+  position: fixed;
+  text-align: center;
+  bottom: 30px;
+  width: 100%;
+}
+
+.footer {
+
+  height:24px;
+  width: 100%;
+  background-image: none;
+  background-repeat: repeat;
+  background-attachment: scroll;
+  background-position: 0% 0%;
+  position: fixed;
+  bottom: 0pt;
+  left: 0pt;
+  background:rgb(251, 251, 123);
+  text-align: center;
+
+}
+
+.footer_contents {
+
+  height:30px;
+  width: 1000px;
+  margin:auto;
+
+}
+
+body {
+  top:0px; bottom: 0px;
+  width: 100%;
+  height: 100%;
+  background-repeat: repeat;
+  position: absolute;
+  overflow-x: scroll;
+  background-image: url("../../assets/osnova1.jpeg");
+}
+
+.bojaa{
+  background-color:rgb(221, 211, 211);
+  color: black;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: #111;
+}
+
+.active {
+  background-color: #04AA6D;
+}

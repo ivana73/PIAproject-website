@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="container-fluid">
+        <div class="row">
+            &nbsp;
+        </div>
+        <div class="row boja">
+            <div class="col-md-4">
+                <h5><i>"If I could say it in words there would be no reason to paint"</i></h5>
+            </div>
+            <div class="col-md-5"></div>
+            <div class="col-md-3">
+                <a routerLink='/' class="linkovi"><h4>Uloguj se</h4></a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <br>
+                <h2>Registruj se:</h2>
+                <hr>
+
+
+                <div class="rounded" style="text-align:center; background-color:rgb(236, 229, 229)" >
+                    <span align="center" *ngFor="let poruka of porukaGreska" style="color:red">{{poruka}} <br> </span>
+                </div>
+
+                <br>
+                <table class="tabela">
+                    <tr>
+                        <td>Ime:</td>
+                        <td>
+                            <input type="text" [(ngModel)]='ime'>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Prezime:</td>
+                        <td>
+                            <input type="text" [(ngModel)]='prezime'>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Korisnicko ime:</td>
+                        <td>
+                            <input type="text" [(ngModel)]='username'>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Lozinka:</td>
+                        <td>
+                            <input type="password" [(ngModel)]='password'>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Potvrda lozinke:</td>
+                        <td>
+                            <input type="password" [(ngModel)]='passwordPotvrda'>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Kontakat telefon:</td>
+                        <td>
+                            <input type="text" [(ngModel)]='telefon' placeholder="u formatu 063456723">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Email:</td>
+                        <td>
+                            <input type="email" [(ngModel)]='mejl' placeholder="example@gmail.com">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Tip korisnika:</td>
+                        <td>
+                            <input type="radio" name="tip" value="učesnik" [(ngModel)]='tip'>Učesnik &nbsp;
+                            <input type="radio" name="tip" value="organizator" [(ngModel)]='tip'>Organizator &nbsp;
+                        </td>
+                    </tr>
+                    <tr *ngIf='tip == "organizator"'>
+                        <td>Naziv organizacije:</td>
+                        <td>
+                            <input type="text" [(ngModel)]='nazivOrganizacije'>
+                        </td>
+                    </tr>
+                    <tr *ngIf='tip == "organizator"'>
+                      <td>Adresa sedista organizacije:</td>
+                      <td>
+                          <input type="text" [(ngModel)]='adresaSedistaOrg'>
+                      </td>
+                  </tr>
+                  <tr *ngIf='tip == "organizator"'>
+                    <td>Adresa sedista organizacije:</td>
+                    <td>
+                        <input type="text" [(ngModel)]='adresaSedistaOrg'>
+                    </td>
+                </tr>
+                <tr *ngIf='tip == "organizator"'>
+                  <td>Maticni broj organizacije:</td>
+                  <td>
+                      <input type="text" [(ngModel)]='matBrOrg'>
+                  </td>
+                </tr>
+                <tr>
+                <td></td>
+                <!-- <td colspan="2">
+                    <ngx-recaptcha2 #captchaElem
+                        [siteKey]="syteKey"
+                        [useGlobalDomain]="false"
+                        (success)="handleCaptchaClicked($event)">
+                    </ngx-recaptcha2>
+                </td> -->
+                    </tr>
+                    <tr colspan="2">
+                        <td></td>
+                       <td><button class="btn btn-success rounded" style="margin-bottom: 40px;" (click)="register()">Registruj se</button></td>
+                    </tr>
+                </table>
+
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="footer_contents"> <b> &#169; </b> Umetnost.rs</div>
+    </div>
+
+</body>
+</html>
