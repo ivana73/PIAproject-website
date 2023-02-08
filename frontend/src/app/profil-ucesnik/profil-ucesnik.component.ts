@@ -46,37 +46,35 @@ export class ProfilUcesnikComponent implements OnInit {
 
 
   updejtuj() {
-
-    if(/^[A-Z]{1}/.test(this.ime) == false) {
-      this.porukaGreska.push("Ime nije u ispravnom formatu.")
-    }
-
-    if(/^[A-Z]{1}/.test(this.prezime) == false) {
-      this.porukaGreska.push("Prezime nije u ispravnom formatu.")
-    }
-
-    if(/\d\d\d\d\d\d\d\d\d/.test((String)(this.telefon)) == false) {
-      this.porukaGreska.push("Telefonski broj nije u ispravnom formatu.")
-    }
-
-    if(/^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$/.test((String)(this.mejl)) == false) {
-      this.porukaGreska.push("Email nije u ispravnom formatu.")
-    }
-    if (this.porukaGreska.length == 0) {
       if (this.ime == null) this.ime = this.korisnik.ime; else this.korisnik.ime = this.ime;
       if (this.prezime == null) this.prezime = this.korisnik.prezime; else this.korisnik.prezime = this.prezime;
       if (this.telefon == null) this.telefon = this.korisnik.telefon; else this.korisnik.telefon = this.telefon;
       if (this.mejl == null) this.mejl = this.korisnik.mejl; else this.korisnik.mejl = this.mejl;
+      // if(/^[A-Z]{1}/.test(this.ime) == false) {
+      //   this.porukaGreska.push("Ime nije u ispravnom formatu.")
+      // }
 
-      this.ucesnikService.updateProfile(this.ime, this.prezime, this.korisnik.username,  this.telefon, this.mejl,this.slika).subscribe((resp)=>{
-         if(resp['message']=='user updated'){
-          localStorage.setItem('user',JSON.stringify(this.korisnik));
-          this.cancel();
-           this.router.navigate(['/profilUcesnik']);
-         }else{
-          this.porukaGreska.push(resp['message']);
-         }
-     })
+      // if(/^[A-Z]{1}/.test(this.prezime) == false) {
+      //   this.porukaGreska.push("Prezime nije u ispravnom formatu.")
+      // }
+
+      // if(/\d\d\d\d\d\d\d\d\d/.test((String)(this.telefon)) == false) {
+      //   this.porukaGreska.push("Telefonski broj nije u ispravnom formatu.")
+      // }
+
+      // if(/^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$/.test((String)(this.mejl)) == false) {
+      //   this.porukaGreska.push("Email nije u ispravnom formatu.")
+      // }
+      if (this.porukaGreska.length == 0) {
+        this.ucesnikService.updateProfile(this.ime, this.prezime, this.korisnik.username,  this.telefon, this.mejl,this.slika).subscribe((resp)=>{
+          if(resp['message']=='user updated'){
+            localStorage.setItem('user',JSON.stringify(this.korisnik));
+            this.cancel();
+            this.router.navigate(['/profilUcesnik']);
+          }else{
+            this.porukaGreska.push(resp['message']);
+          }
+      })
     }
   }
   // filtriraj(){

@@ -13,6 +13,15 @@
             <li class="nav-item">
               <a class="nav-link" routerLink="/profilUcesnik">Profil</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/istorijaRadUcesnik">Istorija radionica</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/prijavljeneRad">Prijavljene radionice</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/aktuelneRad">Aktuelne radionice</a>
+            </li>
           <li class="nav-item">
             <a class="nav-link" (click)="odjaviSe()">Odjavi se</a>
           </li>
@@ -75,8 +84,10 @@
 
 
 <div *ngIf='flagZaIzmenu == 0'>
-  <fieldset style="width: 50vh; justify-content: center; margin: auto;">
-
+  <fieldset style="width: 50vh; justify-content: center; margin: auto; background:rgba(249, 249, 197, 0.655);">
+    <div class="rounded" style="text-align:center; background-color:rgb(236, 229, 229)" >
+      <span align="center" *ngFor="let poruka of porukaGreska" style="color:red">{{poruka}} <br> </span>
+  </div>
   <!-- Form Name -->
   <legend>Profil</legend>
   <!-- Text input-->

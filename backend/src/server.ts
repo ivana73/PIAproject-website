@@ -6,6 +6,8 @@ import cors from 'cors';
 import user from './model/user';
 import userRouter from './routers/user.router';
 import { UserController } from './controllers/user.controller';
+import radionicaRouter from './routers/radionica.router';
+import radionicaAkcijaRouter from './routers/radionicaAkcija.router';
 
 const app = express();
 
@@ -45,7 +47,8 @@ router.route('/register').post((req, res)=>{
 });
 
 router.use('/users', userRouter);
-
+router.use('/radionica', radionicaRouter);
+router.use('/radionicaAkcije', radionicaAkcijaRouter);
 
 app.use('/', router);
 

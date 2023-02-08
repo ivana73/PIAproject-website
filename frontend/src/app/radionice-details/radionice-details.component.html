@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+<div class="column" style="width: 70%; margin-left: 18%;">
+  <table border=1 frame=hsides rules=rows class="tabela" style="text-decoration: solid; display: flex; " >
+    <div class="row">
+      <br>
+        <td> <h3>Naziv:</h3> {{radionica.naziv}}</td>
+        <td style="width: 20%;"> <h3>Datum:</h3> {{radionica.datum}}</td>
+        <td><h3>Mesto:</h3> {{radionica.mesto}}</td>
+        <td style="width: 20%;"><h3>Opis: </h3>{{radionica.opis}}</td>
+        <td style="width: 30%;"><h3>Detaljnije:</h3> {{radionica.detaljnije}}</td>
+    </div>
+  </table>
+
+  <div>
+    <div class="container justify-content-center mt-5 border-left border-right" style="justify-items: center;">
+      <div class="d-flex justify-content-center pt-3 pb-2"> <input type="text" name="text" placeholder="+ Dodaj komentar" class="form-control addtxt" [(ngModel)]='komentar'>
+        <button type="submit" (click)="addComment()">Dodaj</button>
+        <button type="submit" id="likeButton" (click)="like()" [ngClass]="{'gray' : toggle, 'red': !toggle}" style="margin-left: 65%;">Svidjanje</button>
+      </div>
+      <div class="d-flex justify-content-center py-2">
+          <div class="second py-2 px-2" *ngFor = 'let com of comments'>
+            <span class="text1">{{com}}</span>
+              <div class="d-flex justify-content-between py-1 pt-2">
+                  <div><img src="https://i.imgur.com/AgAC1Is.jpg" width="18"><span class="text2">{{korisnik.ime}}</span></div>
+                  <div><span class="text3">Upvote?</span><span class="thumbup"><i class="fa fa-thumbs-o-up"></i></span><span class="text4">3</span></div>
+              </div>
+          </div>
+    </div>
+
+  </div>
+</div>
+
+</div>
+<div class="column"></div>
+
+
+<div class="footer">
+
+  <div class="footer_contents"> <b> &#169; </b> Umetnost.rs</div>
+
+</div>
+
+</body>
+</html>
+

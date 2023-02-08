@@ -29,6 +29,8 @@ let User = new Schema({
     matBrOrg: {type: Number},
     odobren: {type: Number},
     slika: {type: String},
+    istorijaRadionica: {type: Array},
+    prijavljeneRadionice: {type: Array}
 
 });
 

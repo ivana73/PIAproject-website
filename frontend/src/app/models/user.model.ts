@@ -1,3 +1,5 @@
+import { Radionica } from "./radionica.model";
+
 export class User{
   ime: string;
   prezime: string;
@@ -11,4 +13,6 @@ export class User{
   matBrOrg: number;
   dobren: number;
   slika: string;
+  istorijaRadionica: Array<Radionica>;
+  prijavljeneRadionice: Array<string>;
 }

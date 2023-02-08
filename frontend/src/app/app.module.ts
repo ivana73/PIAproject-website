@@ -10,6 +10,10 @@ import { LoginComponent } from './login/login.component';
 import { UsersComponent } from './users/users.component';
 import { SigninComponent } from './signin/signin.component';
 import { ProfilUcesnikComponent } from './profil-ucesnik/profil-ucesnik.component';
+import { IstorijaRadUcesnikComponent } from './istorija-rad-ucesnik/istorija-rad-ucesnik.component';
+import { RadioniceDetailsComponent } from './radionice-details/radionice-details.component';
+import { AktuelneRadioniceComponent } from './aktuelne-radionice/aktuelne-radionice.component';
+import { PrijavljeneRadioniceComponent } from './prijavljene-radionice/prijavljene-radionice.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +21,11 @@ import { ProfilUcesnikComponent } from './profil-ucesnik/profil-ucesnik.componen
     LoginComponent,
     UsersComponent,
     SigninComponent,
-    ProfilUcesnikComponent
+    ProfilUcesnikComponent,
+    IstorijaRadUcesnikComponent,
+    RadioniceDetailsComponent,
+    AktuelneRadioniceComponent,
+    PrijavljeneRadioniceComponent
   ],
   imports: [
     BrowserModule,
