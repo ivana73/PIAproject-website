@@ -18,4 +18,8 @@ radionicaAkcijaRouter.route('/join').post(
     (req, res) => new RadionicaAkcijaController().join(req, res)
 )
 
+radionicaAkcijaRouter.route('/findAllRA4user').post(
+    (req, res) => new RadionicaAkcijaController().findAllRA4user(req, res)
+)
+
 export default radionicaAkcijaRouter;

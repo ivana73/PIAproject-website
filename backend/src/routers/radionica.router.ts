@@ -6,6 +6,10 @@ radionicaRouter.route('/getRadionicaByName').post(
     (req, res) => new RadionicaController().getRadionicaByName(req, res)
 )
 
+radionicaRouter.route('/getRadionicaById').post(
+    (req, res) => new RadionicaController().getRadionicaById(req, res)
+)
+
 radionicaRouter.route('/getSveAktuelneRadionice').post(
     (req, res) => new RadionicaController().getSveAktuelneRadionice(req, res)
 )

@@ -85,25 +85,17 @@ export class RadioniceDetailsComponent implements OnInit {
       this.ucesnikService.checkAkc(this.korisnik.username, this.radionica).subscribe((resp: RadionicaAkcije)=>{
         if (resp == null) {
           this.ucesnikService.addAkc(this.korisnik.username, this.radionica).subscribe((resp: RadionicaAkcije)=>{
-            this.ucesnikService.join(this.korisnik.username, this.radionica).subscribe((resp : RadionicaAkcije)=>{
-              if (resp!=null){
-                this.ucesnikService.decNumberMesta(this.radionica, this.radionica.preostaloMesta-1).subscribe((resp: RadionicaAkcije)=>{
-                this.joinBtnVal = "Prijavljeni ste";})
-              }
-            })
-
           })
         }
-        else {
+
         this.ucesnikService.join(this.korisnik.username, this.radionica).subscribe((resp)=>{
           if (resp!=null){
-            this.ucesnikService.decNumberMesta(this.radionica, --this.radionica.preostaloMesta).subscribe((resp: RadionicaAkcije)=>{
+            this.ucesnikService.decNumberMesta(this.radionica, this.radionica.preostaloMesta).subscribe((resp: RadionicaAkcije)=>{
             this.joinBtnVal = "Prijavljeni ste";})
           }
 
-        })
-      }
-    })
+        });
+    });
     }
   }
 

@@ -45,6 +45,13 @@ export class UcesnikService {
     return this.http.post(`${this.uri}/radionica/getRadionicaByName`, data);
   }
 
+  getRadionicaById(idRadionice){
+    const data={
+      idRadionice: idRadionice
+    }
+    return this.http.post(`${this.uri}/radionica/getRadionicaById`, data);
+  }
+
   addComment(komentar, idRadionice,username) {
     const data={
       komentar: komentar,
@@ -103,6 +110,14 @@ export class UcesnikService {
       preostaloMesta: numberMesta
     }
     return this.http.post(`${this.uri}/radionica/decNumberMesta`, data);
+  }
+
+  findAllRA4user(username) {
+    const data={
+      username: username
+    }
+
+    return this.http.post(`${this.uri}/radionicaAkcije/findAllRA4user`, data);
   }
 
 }

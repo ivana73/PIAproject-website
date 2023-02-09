@@ -14,6 +14,17 @@ export class RadionicaController {
         })
     }
 
+    getRadionicaById = (req: express.Request, res: express.Response)=>{
+        let id = req.body.idRadionice;
+
+        Radionica.findOne({'_id':id},(err, radionica)=>{
+            if(err) res.json(null);
+            else {
+                res.json(radionica)
+            }
+        })
+    }
+
     getSveAktuelneRadionice = (req: express.Request, res: express.Response)=>{
 
         Radionica.find({},(err, radionice)=>{

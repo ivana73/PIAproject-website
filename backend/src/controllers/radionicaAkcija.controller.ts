@@ -64,6 +64,15 @@ export class RadionicaAkcijaController {
     
     }
 
+    findAllRA4user= (req: express.Request, res: express.Response)=>{
+
+        RadionicaAkcije.find({'prijavljen': true},(err, radionice)=>{
+            if(err) console.log(err);
+            else {
+                res.json(radionice)
+            }
+        })
+    }
 }
 
 
