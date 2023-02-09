@@ -19,10 +19,9 @@ export class AktuelneRadioniceComponent implements OnInit {
         if (radionica) {
           this.radionice = radionica;
         }
-
         let j = 0;
         for ( let i=0;i<this.radionice.length ;i++) {
-          const [month, day, year] = this.radionice[i].datum.split('/');
+          const [day,month, year] = this.radionice[i].datum.split('/');
           const date = new Date(+year, +month - 1, +day);
           if (date >= this.dateNow) {
             this.aktuelneRadionice[j++] = this.radionice[i];

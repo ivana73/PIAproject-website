@@ -108,8 +108,5 @@ export class IstorijaRadUcesnikComponent implements OnInit {
   istorijaRadionica() {
 
   }
-  udjiUradionicu(radionica) {
-    sessionStorage.setItem("radionica", JSON.stringify(radionica));
-    this.router.navigate(['/radionicaDetails']);
-  }
+
 }

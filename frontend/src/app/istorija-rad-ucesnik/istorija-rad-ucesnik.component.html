@@ -50,14 +50,17 @@
   </div>
 </div>
 <div class="column" style="width: 50%; margin-left: 18%;">
-  <table border=1 frame=hsides rules=rows class="tabela" style="text-decoration: solid; display: block; " >
-    <div class="row" style="padding: 1%; display: inline-block;">
-    <tr *ngFor = 'let radionicaa of radionice'>
-        <h4>Radionica: {{radionicaa.naziv}} </h4>
-        <button (click)="udjiUradionicu(radionicaa)"> Detalji </button>
-      </tr>
-    </div>
-  </table>
+  <table class="tabela">
+    <ng-container *ngFor='let radionicaa of radionice'>
+        <tr><td><h2>{{radionicaa.naziv}}</h2></td></tr>
+        <tr><td>{{radionicaa.naziv}}</td></tr>
+        <tr><td>{{radionicaa.datum}}</td></tr>
+        <tr><td>{{radionicaa.mesto}}</td></tr>
+        <tr><td>{{radionicaa.opis}}</td></tr>
+        <tr><td>{{radionicaa.detaljnije}}</td></tr>
+        <!-- <tr><button (click)="udjiUradionicu(radionicaa)"> Detalji </button></tr> -->
+    </ng-container>
+</table>
 </div>
 <div class="column"></div>
 
