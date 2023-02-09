@@ -18,13 +18,14 @@
         <td style="width: 20%;"><h3>Opis: </h3>{{radionica.opis}}</td>
         <td style="width: 30%;"><h3>Detaljnije:</h3> {{radionica.detaljnije}}</td>
     </div>
+    <button type="submit"  id="joinButton"  (click)="join()"> {{joinBtnVal}}</button>
   </table>
 
   <div>
     <div class="container justify-content-center mt-5 border-left border-right" style="justify-items: center;">
       <div class="d-flex justify-content-center pt-3 pb-2"> <input type="text" name="text" placeholder="+ Dodaj komentar" class="form-control addtxt" [(ngModel)]='komentar'>
         <button type="submit" (click)="addComment()">Dodaj</button>
-        <button type="submit" id="likeButton" (click)="like()" [ngClass]="{'gray' : toggle, 'red': !toggle}" style="margin-left: 65%;">Svidjanje</button>
+        <button type="submit" id="likeButton" (click)="like()" [ngClass]="{'gray' : !toggle, 'red': toggle}" style="margin-left: 65%;">Svidjanje</button>
       </div>
       <div class="d-flex justify-content-center py-2">
           <div class="second py-2 px-2" *ngFor = 'let com of comments'>

@@ -87,4 +87,22 @@ export class UcesnikService {
 
     return this.http.post(`${this.uri}/radionicaAkcije/addAkc`, data);
   }
+
+  join(username, idRadionice) {
+    const data={
+      username: username,
+      idRadionice: idRadionice
+    }
+
+    return this.http.post(`${this.uri}/radionicaAkcije/join`, data);
+  }
+
+  decNumberMesta(idRadionice, numberMesta) {
+    const data={
+      idRadionice: idRadionice,
+      preostaloMesta: numberMesta
+    }
+    return this.http.post(`${this.uri}/radionica/decNumberMesta`, data);
+  }
+
 }

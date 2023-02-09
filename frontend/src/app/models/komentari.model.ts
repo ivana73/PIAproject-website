@@ -1,5 +1,5 @@
 export class Poruka{
-  date: string;
+  datum: string;
   from: string;
   to: string;
   text: string;

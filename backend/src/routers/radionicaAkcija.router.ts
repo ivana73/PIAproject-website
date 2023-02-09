@@ -14,4 +14,8 @@ radionicaAkcijaRouter.route('/addAkc').post(
     (req, res) => new RadionicaAkcijaController().addAkc(req, res)
 )
 
+radionicaAkcijaRouter.route('/join').post(
+    (req, res) => new RadionicaAkcijaController().join(req, res)
+)
+
 export default radionicaAkcijaRouter;

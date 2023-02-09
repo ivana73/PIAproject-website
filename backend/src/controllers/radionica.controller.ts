@@ -47,4 +47,16 @@ export class RadionicaController {
                 }
         });
     }
+
+    decNumberMesta = (req: express.Request, res: express.Response)=>{
+        let idRadionice = req.body.idRadionice;
+        let preostaloMesta = req.body.preostaloMesta;
+
+        Radionica.findOneAndUpdate({'_id':idRadionice},{$set: {'preostaloMesta': preostaloMesta}},(err, radioniceAkc)=>{
+                if(err) console.log(err);
+                else {
+                    res.json('decresed');
+                }
+        });
+    }
 }

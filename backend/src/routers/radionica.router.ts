@@ -17,4 +17,9 @@ radionicaRouter.route('/addComment').post(
 radionicaRouter.route('/getComments').post(
     (req, res) => new RadionicaController().getComments(req, res)
 )
+
+radionicaRouter.route('/decNumberMesta').post(
+    (req, res) => new RadionicaController().decNumberMesta(req, res)
+)
+
 export default radionicaRouter;

@@ -6,6 +6,7 @@ export class Radionica{
   mesto: string;
   opis: string;
   detaljnije: string;
+  preostaloMesta:number;
   profilnaSlika: string;
   galerijaSlika: Array<string>;
   komentari: Array<Poruka>;

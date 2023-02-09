@@ -39,7 +39,7 @@ export class RadionicaAkcijaController {
             radionica: id,
             lajkovi: false,
             attended: true,
-            chat: []
+            chat: ["zapocni"]
             })
         
             RadionicaAkcije.insertMany(newRA).then(user=>{
@@ -47,6 +47,20 @@ export class RadionicaAkcijaController {
         }).catch(err=>{
             res.status(400).json({'message': 'error'})
         })
+    
+    }
+
+    join = (req: express.Request, res: express.Response)=>{
+        let id = req.body.idRadionice;
+        let username = req.body.username;
+        let bul = false;
+    
+        RadionicaAkcije.findOneAndUpdate({'radionica':id, 'username': username, 'prijavljen': bul },{$set: {'prijavljen': true}},(err, radioniceAkc)=>{
+            if(err) res.json(null);
+            else {
+                res.json('1');
+            }
+         });
     
     }
 
