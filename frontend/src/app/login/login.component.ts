@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   }
   username: string;
   password: string;
+  porukaGreska: string[] = [];
 
   login(){
     this.usersServise.login(this.username, this.password).subscribe((user: User)=>{
@@ -24,7 +25,7 @@ export class LoginComponent implements OnInit {
          this.ruter.navigate(['/user']);
       }
       else{
-        alert("Bad data");
+          this.porukaGreska.push("Neispravan username ili lozinka.")
       }
     })
   }

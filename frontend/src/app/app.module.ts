@@ -14,6 +14,7 @@ import { IstorijaRadUcesnikComponent } from './istorija-rad-ucesnik/istorija-rad
 import { RadioniceDetailsComponent } from './radionice-details/radionice-details.component';
 import { AktuelneRadioniceComponent } from './aktuelne-radionice/aktuelne-radionice.component';
 import { PrijavljeneRadioniceComponent } from './prijavljene-radionice/prijavljene-radionice.component';
+import { NeregistrovaniUserComponent } from './neregistrovani-user/neregistrovani-user.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { PrijavljeneRadioniceComponent } from './prijavljene-radionice/prijavlje
     IstorijaRadUcesnikComponent,
     RadioniceDetailsComponent,
     AktuelneRadioniceComponent,
-    PrijavljeneRadioniceComponent
+    PrijavljeneRadioniceComponent,
+    NeregistrovaniUserComponent
   ],
   imports: [
     BrowserModule,

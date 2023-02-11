@@ -1,21 +1,69 @@
-<table>
-  <tr>
-      <td>Username:</td>
-      <td>
-          <input type='text' name='username' [(ngModel)]='username'>
-      </td>
-  </tr>
-  <tr>
-      <td>Password:</td>
-      <td>
-          <input type='password' name='password' [(ngModel)]='password'>
-      </td>
-  </tr>
-  <tr>
-      <td>
-          <button (click)='login()'>Login</button>
-      </td>
-  </tr>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
 
-</table>
-<a routerLink='signin'>Signin</a>
+    <div class="container-fluid">
+        <div class="row">
+            &nbsp;
+        </div>
+        <div class="row boja">
+            <div class="col-md-4">
+                <h5><i>"If I could say it in words there would be no reason to paint"</i></h5>
+            </div>
+            <div class="col-md-5"></div>
+            <div class="col-md-3">
+                <a routerLink='/signin' class="linkovi"><h4>Registruj se</h4></a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <br>
+                <h2>Uloguj se:</h2>
+                <hr>
+
+
+                <div class="rounded" style="text-align:center; background-color:rgb(236, 229, 229)" >
+                    <span align="center" *ngFor="let poruka of porukaGreska" style="color:red">{{poruka}} <br> </span>
+                </div>
+
+                <br>
+                <table class="tabela">
+                    <tr>
+                        <td>Korisnicko ime:</td>
+                        <td>
+                            <input type="text" [(ngModel)]='username'>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Lozinka:</td>
+                        <td>
+                            <input type="password" [(ngModel)]='password'>
+                        </td>
+                    </tr>
+                    <tr colspan="2">
+                        <td></td>
+                       <td><button class="btn btn-success rounded" style="margin-bottom: 40px;" (click)="login()">Registruj se</button></td>
+                    </tr>
+                </table>
+
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+    <div class="row">
+      <app-neregistrovani-user></app-neregistrovani-user>
+    </div>
+
+    <div class="footer">
+        <div class="footer_contents"> <b> &#169; </b> Umetnost.rs</div>
+    </div>
+
+</body>
+</html>
