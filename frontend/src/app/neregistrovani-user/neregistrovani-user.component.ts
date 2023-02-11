@@ -27,6 +27,7 @@ export class NeregistrovaniUserComponent implements OnInit {
             this.aktuelneRadionice[j++] = this.radionice[i];
           }
         }
+        this.sveaktuelneRadionice = this.aktuelneRadionice;
 
     });
   }
@@ -34,6 +35,8 @@ export class NeregistrovaniUserComponent implements OnInit {
   fromDb = undefined;
   radionice: Radionica[];
   aktuelneRadionice: Radionica[]= this.fromDb || [];
+  sveaktuelneRadionice: Radionica[]= this.fromDb || [];
+  newaktuelneRadionice: Radionica[]= this.fromDb || [];
   p:any;
   poImenu: string;
   poMestu: string;
@@ -104,5 +107,39 @@ export class NeregistrovaniUserComponent implements OnInit {
 
   searchRadionice() {
 
+    let type=0;
+    if (this.poMestu != null) type = 1; {
+      if (this.poImenu != null) type = 3;
+    }
+    if (this.poImenu != null) type = 2;
+    console.log(this.poImenu + " " + this.poMestu + " " + type)
+    if (type != 0) {
+      let j = 0;
+      for ( let i=0;i<this.sveaktuelneRadionice.length ;i++) {
+          if (type == 1) {
+              if (this.sveaktuelneRadionice[i].mesto == this.poMestu) {
+                this.newaktuelneRadionice[j++] = this.sveaktuelneRadionice[i];
+              }
+
+          }
+          if (type == 2) {
+            if (this.sveaktuelneRadionice[i].naziv == this.poImenu ) {
+              this.newaktuelneRadionice[j++] = this.sveaktuelneRadionice[i];
+            }
+          }
+          if (type == 3) {
+            if (this.sveaktuelneRadionice[i].mesto == this.poMestu && this.sveaktuelneRadionice[i].naziv == this.poImenu ) {
+              this.newaktuelneRadionice[j++] = this.sveaktuelneRadionice[i];
+            }
+          }
+
+      }
+      this.aktuelneRadionice = this.newaktuelneRadionice;
+    }
+    else {
+      this.aktuelneRadionice = this.sveaktuelneRadionice;
+    }
+    this.poImenu =null;
+    this.poMestu = null;
   }
 }

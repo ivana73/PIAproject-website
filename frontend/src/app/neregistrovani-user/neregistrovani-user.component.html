@@ -19,21 +19,8 @@
   </div>
 </div>
 <div class="column" style="width: 50%; margin-left: 18%;">
-  <table class="tabela">
-    <ng-container *ngFor='let radionicaa of aktuelneRadionice' >
-        <tr><td><h2>{{radionicaa.naziv}}</h2></td></tr>
-        <tr><td>{{radionicaa.naziv}}</td></tr>
-        <tr><td>{{radionicaa.datum}}</td></tr>
-        <tr><td>{{radionicaa.mesto}}</td></tr>
-        <tr><td>{{radionicaa.opis}}</td></tr>
-        <tr><td>{{radionicaa.detaljnije}}</td></tr>
-    </ng-container>
-</table>
-</div>
-
-<div class="column" style="width: 50%; ">
-
-  <table class="tabela">
+  <div class="row">
+    <table class="tabela">
       <tr>
           <td>Ime radionice:</td>
           <td>
@@ -53,5 +40,23 @@
       <ng-template #nowritersmssg>
         No writers found.
       </ng-template>
-  </table>
+    </table>
+    </div>
+
+  <table class="tabela">
+    <ng-container *ngFor='let radionicaa of aktuelneRadionice' >
+        <tr><td><h2>{{radionicaa.naziv}}</h2></td></tr>
+        <tr><td>{{radionicaa.naziv}}</td></tr>
+        <tr><td>{{radionicaa.datum}}</td></tr>
+        <tr><td>{{radionicaa.mesto}}</td></tr>
+        <tr><td>{{radionicaa.opis}}</td></tr>
+        <tr><td>{{radionicaa.detaljnije}}</td></tr>
+    </ng-container>
+</table>
+
+
 </div>
+
+
+
+
