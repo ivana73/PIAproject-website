@@ -1,2 +1,2 @@
 # PIAprojekat
-Making website using mongodb, angular and nodejs 
+Building website using mongodb, angular and nodejs 
