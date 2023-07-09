@@ -41,4 +41,7 @@ userRouter.route('/getObjectbyID').post(
 userRouter.route('/updatePosao').post( 
     (req, res)=>new UserController().updatePosao(req, res)
 )
+userRouter.route('/updateObjekat').post( 
+    (req, res)=>new UserController().updateObjekat(req, res)
+)
 export default userRouter;

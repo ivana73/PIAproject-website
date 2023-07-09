@@ -26,32 +26,47 @@ export class AgencijaPosaoComponent implements OnInit {
   ngOnInit(): void {
     this.korisnik = JSON.parse(localStorage.getItem('user'));
     console.log(this.korisnik.username)
-    this.objectService.getPoslove(this.korisnik.username,null).subscribe({
+
+
+    this.objectService.getPoslove(null, this.korisnik.username).subscribe({
       next: (objects: Posao[]) => {
-        if (objects != null && objects.length>0) {
+        if (objects != null) {
           console.log(objects)
           this.objects = objects;
           this.objectsWhole = this.objects;
+          console.log(objects[1].agencija)
         }
-        else {
-          this.objectService.getPoslove(null, this.korisnik.username).subscribe({
-            next: (objects: Posao[]) => {
-              if (objects != null) {
-                console.log(objects)
-                this.objects = objects;
-                this.objectsWhole = this.objects;
-              }
-              },
-              error: (error) => {
-                console.error(error);
-              }
-            });
+        },
+        error: (error) => {
+          console.error(error);
         }
-      },
-      error: (error) => {
-        console.error(error);
-      }
-    });
+      });
+    // this.objectService.getPoslove(this.korisnik.username,null).subscribe({
+    //   next: (objects: Posao[]) => {
+    //     if (objects != null && objects.length>0) {
+    //       console.log(objects)
+    //       this.objects = objects;
+    //       this.objectsWhole = this.objects;
+    //     }
+    //     else {
+    //       this.objectService.getPoslove(null, this.korisnik.username).subscribe({
+    //         next: (objects: Posao[]) => {
+    //           if (objects != null) {
+    //             console.log(objects)
+    //             this.objects = objects;
+    //             this.objectsWhole = this.objects;
+    //           }
+    //           },
+    //           error: (error) => {
+    //             console.error(error);
+    //           }
+    //         });
+    //     }
+
+    //   error: (error) => {
+    //     console.error(error);
+    //   }
+    // });
   }
 
   objekat: Objekat;
@@ -94,6 +109,9 @@ export class AgencijaPosaoComponent implements OnInit {
 
   filterStatus(status: string) {
     this.pom = this.objectsWhole;
+    if (status === 'all') {
+      this.objects = this.objectsWhole;
+    }
     if (status === 'requested') {
       this.objects = this.objectsWhole.filter((posao: Posao) => posao.statusOfAcceptance === '1');
     }

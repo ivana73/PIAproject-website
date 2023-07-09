@@ -137,7 +137,7 @@ export class UserController {
         let idRadionice = req.body.idRadionice;
         let komentar = req.body.komentar;
 
-        User.findOneAndUpdate({'_id':idRadionice},{$push: {'komentari': komentar}},(err, radioniceAkc)=>{
+        User.findOneAndUpdate({'username':idRadionice},{$push: {'komentari': komentar}},(err, radioniceAkc)=>{
                 if(err) console.log(err);
                 else {
                     res.json('added');
@@ -145,16 +145,16 @@ export class UserController {
         });
     }
   
-      getComments = (req: express.Request, res: express.Response)=>{
-          let idRadionice = req.body.idRadionice;
-          
-          User.findOne({'_id':idRadionice},(err, radioniceAkc)=>{
-                  if(err) console.log(err);
-                  else {
-                      res.json(radioniceAkc);
-                  }
-          });
-      }
+    getComments = (req: express.Request, res: express.Response)=>{
+        let idRadionice = req.body.idRadionice;
+        
+        User.findOne({'username':idRadionice},(err, radioniceAkc)=>{
+                if(err) console.log(err);
+                else {
+                    res.json(radioniceAkc);
+                }
+        });
+    }
       changePassword = (req: express.Request, res: express.Response)=>{
         let username = req.body.username;
         let password = req.body.password;
@@ -213,7 +213,19 @@ export class UserController {
     updatePosao = (req: express.Request, res: express.Response)=>{
         let posao = req.body.posao;
     
-        Posao.findOneAndUpdate({'_id': posao},{$set: {'statusOfAcceptance': posao.statusOfAcceptance, 'novac': posao.novac}},(err, user)=>{
+        Posao.findOneAndUpdate({'_id': posao},{$set: {'agencija':posao.agencija,'statusOfAcceptance': posao.statusOfAcceptance, 'novac': posao.novac, 'statusOfWork': posao.statusOfWork}},(err, user)=>{
+            if(err) console.log(err);
+            else {
+                res.json(user);
+            }
+         });
+    
+    }
+
+    updateObjekat = (req: express.Request, res: express.Response)=>{
+        let objekat = req.body.objekat;
+    
+       Objects.findOneAndUpdate({'_id': objekat},{$set: {'rooms': objekat.rooms}},(err, user)=>{
             if(err) console.log(err);
             else {
                 res.json(user);

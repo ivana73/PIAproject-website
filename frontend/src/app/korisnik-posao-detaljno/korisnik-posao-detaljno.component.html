@@ -42,11 +42,76 @@
       </div>
     </div> -->
 
-    <div class="row">
-      <div class="col-md-6">
-        <app-canvas></app-canvas>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <app-canvas></app-canvas>
+        </div>
+
+        <div class="col-md-6">
+          <div class="card">
+            <form *ngIf="myPosao.statusOfAcceptance == '2'" [formGroup]="objekatForm" (ngSubmit)="onSubmit()">
+              <!-- ... -->
+              <div>
+                <label for="status">Novac za uplatu: {{myPosao.novac}}din. Status prihvatanja:</label>
+                <select id="status" formControlName="status">
+                  <option value="Odobreno">Prihvatam ponudu</option>
+                  <option value="Odbijeno">Odbijam ponudu</option>
+                </select>
+                </div>
+                <div *ngIf="objekatForm.get('status').value == 'Odobreno'">
+                  <label for="novac">Uplatite novac:</label>
+                  <input type="text" id="novac" formControlName="novac">
+                </div>
+              <button  *ngIf="objekatForm.get('status').value == 'Odobreno'" type="submit" [disabled]="objekatForm.invalid">Plati</button>
+              <button  *ngIf="objekatForm.get('status').value == 'Odbijeno'" type="submit" [disabled]="objekatForm.invalid">Odbij</button>
+            </form>
+            <form *ngIf="myPosao.statusOfWork == '3'" [formGroup]="objekatForm" (ngSubmit)="onSubmit()">
+              <!-- ... -->
+            </form>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="card">
+        <div *ngIf="myPosao.statusOfWork == '3'">
+          <div>
+            <div class="container justify-content-center mt-5 border-left border-right" style="justify-items: center;">
+              <div class="d-flex justify-content-center pt-3 pb-2"> <input type="text" name="text" placeholder="Unesi komentar" class="form-control addtxt" [(ngModel)]='komentarText'>
+                <div>
+                  <span class="text3">Oceni:</span>
+                  <select class="rating-dropdown" [(ngModel)]="ocena">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+                </div>
+                <button *ngIf="isCommIn == 0"  type="submit" (click)="addComment()">Dodaj</button>
+                <button *ngIf="isCommIn == 1" type="submit" (click)="addComment()">Promeni</button>
+              </div>
+              <div class="d-flex justify-content-center py-2">
+                  <div class="second py-2 px-2" >
+                    <div><td>Od korisnika: <span class="text1">{{poruka.from}}</span></td></div>
+                    <div><td>Komentar:<span class="text1">{{poruka.text}}</span></td></div>
+                    <div> <td><span class="text1">{{poruka.datum}}</span></td></div>
+                    <div><td>Ocena: <span class="text1">{{poruka.ocena}}</span></td></div>
+                    <div class="d-flex justify-content-between py-1 pt-2">
+                        <div><img *ngIf='poruka.slika != null' [src]="'data:image/png;base64,' + poruka.slika" width="18"><img *ngIf='poruka.slika == null' src="https://i.imgur.com/AgAC1Is.jpg" width="18"><span class="text2">{{myPosao.klijenat}}</span></div>
+                        <div><span class="text3">Upvote?</span><span class="thumbup"><i class="fa fa-thumbs-o-up"></i></span><span class="text4">3</span></div>
+                    </div>
+                    <!-- <div><td> <button type="submit" (click)="changeComment(com)">Promeni</button></td></div> -->
+                  </div>
+            </div>
+
+          </div>
+
+          </div>
+</div></div></div>
       </div>
     </div>
+
   </div>
 
   <div class="footer">

@@ -19,7 +19,7 @@ export class AgencijeMojeDetaljnoComponent implements OnInit {
   ngOnInit(): void {
     this.korisnik = JSON.parse(localStorage.getItem("user"));
     this.radionica = JSON.parse(sessionStorage.getItem("agencija"));
-    this.usersServise.getComments(this.radionica).subscribe((resp: User)=>{
+    this.usersServise.getComments(this.radionica.username).subscribe((resp: User)=>{
       console.log(1)
       if (resp != null) {
         console.log(resp.komentari)

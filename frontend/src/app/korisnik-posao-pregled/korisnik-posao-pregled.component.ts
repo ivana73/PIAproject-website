@@ -57,8 +57,9 @@ export class KorisnikPosaoPregledComponent implements OnInit {
     localStorage.setItem('myObject',JSON.stringify(this.objekat));
     localStorage.removeItem('rooms');
     localStorage.setItem('rooms',JSON.stringify(this.objekat.rooms));
-
-    this.router.navigateByUrl('/agencijaPosaoDetaljno', { skipLocationChange: false }).then(() => {
+    localStorage.removeItem('myPosao');
+    localStorage.setItem('myPosao',JSON.stringify(posao));
+    this.router.navigateByUrl('/posaoDetaljnije', { skipLocationChange: false }).then(() => {
        window.location.reload();
     });
   }

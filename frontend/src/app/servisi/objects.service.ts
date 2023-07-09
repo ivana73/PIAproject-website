@@ -66,5 +66,10 @@ export class ObjectsService {
     }
     return this.http.post(`${this.uri}/users/updatePosao`, data);
   }
-
+  updateObjekat(objekat){
+    const data={
+      objekat:objekat
+    }
+    return this.http.post(`${this.uri}/users/updateObjekat`, data);
+  }
 }

@@ -7,21 +7,21 @@
   <title>Document</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-sm navbar-light bojaa">
-        <div class="collapse navbar-collapse col-md-9" id="navbarTogglerDemo03">
-          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/profilUcesnik">Profil</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/agencijaPosao">Pregledaj poslove</a>
-            </li>
-          <li class="nav-item">
-            <a class="nav-link" (click)="odjaviSe()">Odjavi se</a>
-          </li>
-          </ul>
-        </div>
-</nav>
+  <nav class="navbar navbar-expand-sm navbar-light bojaa">
+    <div class="collapse navbar-collapse col-md-9" id="navbarTogglerDemo03">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/agencijaProfil">Profil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/agencijaPosao">Pregledaj poslove</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="odjaviSe()">Odjavi se</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
 
 
@@ -36,7 +36,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let object of objects" class="table-row" [ngClass]="{ 'rejected-request': object.statusOfAcceptance === '0', 'accepted-request': object.statusOfAcceptance === '2' }" (click)="onItemClick(object)">
+    <tr *ngFor="let object of objects" class="table-row"  (click)="onItemClick(object)">
       <td>{{ object.klijenat }}</td>
       <td>{{ object.agencija }}</td>
       <td>{{ object.datumZavrsetka }}</td>
@@ -53,6 +53,9 @@
 <div class="column" style="width: 10%;" >
   <div class="row" >
    <h3>Filteri: </h3>
+  </div>
+  <div class="row" >
+    <button (click)="filterStatus('all')">Svi </button>
   </div>
   <div class="row" >
     <button (click)="filterStatus('requested')">Zatrazeni </button>
