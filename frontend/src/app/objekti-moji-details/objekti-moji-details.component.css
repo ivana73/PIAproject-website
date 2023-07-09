@@ -1,0 +1,319 @@
+.tabela1{
+  margin: auto;
+  padding: 5px;
+  justify-content: center;
+  text-align: center;
+  width: 50%;
+}
+.tabela{
+  padding: 10px;
+  justify-content: center;
+  text-align: center;
+  background:rgba(249, 249, 197, 0.605);
+  width: 100%;
+  justify-content: center;
+  margin: auto;
+
+  /* height: 100vh; */
+}
+
+.polja{
+  width: 100px;
+}
+
+h2{
+  text-align: center;
+}
+
+img{
+  margin: 3px 3px 3px 3px;
+  width:30%;
+  height:75%;
+}
+
+.boja{
+  background-color: rgb(158, 154, 154);
+  height: 100px;
+}
+
+h5{
+  font-size: 15px;
+  display: inline;
+}
+
+h3{
+  text-align: center;
+}
+
+button{
+  background-color:rgba(209, 238, 236, 0.684);
+  display: inline;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding: 0 7px;
+  justify-content: center;
+  margin: auto;
+}
+
+.greske{
+  color:red;
+  justify-content: center;
+  text-align: center;
+
+}
+
+input[type="text"]{
+  display: inline;
+  width: 95px;
+}
+input[type="number"]{
+  display: inline;
+  width: 40%;
+}
+
+.lokacija {
+  padding: 0 7px;
+}
+
+.dugme {
+  padding: 0 7px;
+}
+
+.bottom {
+  position: fixed;
+  text-align: center;
+  bottom: 30px;
+  width: 100%;
+}
+
+.footer {
+
+  height:24px;
+  width: 100%;
+  background-image: none;
+  background-repeat: repeat;
+  background-attachment: scroll;
+  background-position: 0% 0%;
+  position: fixed;
+  bottom: 0pt;
+  left: 0pt;
+  background:rgb(251, 251, 123);
+  text-align: center;
+
+}
+
+.footer_contents {
+
+  height:30px;
+  width: 1000px;
+  margin:auto;
+
+}
+
+body {
+  top:0px; bottom: 0px;
+  width: 100%;
+  height: 100%;
+  background-repeat: repeat;
+  position: absolute;
+  overflow-x: scroll;
+  background-image: url("../../assets/osnova1.jpeg");
+}
+
+.bojaa{
+  background-color:rgb(221, 211, 211);
+  color: black;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: #111;
+}
+
+.active {
+  background-color: #04AA6D;
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+/* Style inputs */
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=submit] {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+/* Style the container/contact section */
+.container {
+  border-radius: 5px;
+  padding: 10px;
+}
+
+/* Create two columns that float next to eachother */
+.column {
+  float: left;
+  width: 50%;
+  margin-top: 6px;
+  padding: 20px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+
+.editable
+{
+    position: relative;
+    border: 1px solid gray;
+    padding: 3px;
+    background-color: white;
+    box-shadow: rgba(0,0,0,0.4) 2px 2px 2px inset;
+}
+
+.editable > input
+{
+    position: relative;
+    z-index: 1;
+    border: none;
+    background-color: transparent;
+    box-shadow: none;
+    width: 100%;
+}
+
+.editable::after
+{
+    position: absolute;
+    left: 4px;
+    top: 5px;
+    content: attr(data-placeholder);
+    pointer-events: none;
+    opacity: 0.5;
+    z-index: 1;
+}
+
+.column {
+  float: left;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+div {
+  margin-bottom: 10px;
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Add any other desired styles for the container */
+}
+
+.centered {
+  /* Add any desired styles for the centered div */
+}
+.card-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.card {
+  width: calc(50% - 20px);
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card h2 {
+  margin-bottom: 10px;
+}
+
+.canvas-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}

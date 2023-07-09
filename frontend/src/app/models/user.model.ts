@@ -1,3 +1,4 @@
+import { Poruka } from "./komentari.model";
 import { Radionica } from "./radionica.model";
 
 export class User{
@@ -15,4 +16,7 @@ export class User{
   slika: string;
   istorijaRadionica: Array<Radionica>;
   prijavljeneRadionice: Array<string>;
+  kratakOpis: string;
+  komentari: Array<Poruka>;
+
 }

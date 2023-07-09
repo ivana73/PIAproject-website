@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-sm navbar-light bojaa">
+        <div class="collapse navbar-collapse col-md-9" id="navbarTogglerDemo03">
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/profilUcesnik">Profil</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/objektiMoji">Dodaj objekat</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/objektiSviMoji">Moji objekati</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/agencije">Agencije</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/posaoDodavanje">Dodaj posao</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/posaoPregled">Pregledaj posao</a>
+            </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="odjaviSe()">Odjavi se</a>
+          </li>
+          </ul>
+        </div>
+</nav>
+<h2>Dodaj objekat:</h2>
+<table class="object-table">
+  <thead>
+    <tr>
+      <th>Tip</th>
+      <th>Adresa</th>
+      <th>Kvadratura</th>
+      <th>Broj Prostorija</th>
+      <th>Odabrani objekat:</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let object of objects" class="table-row">
+      <td>{{ object.tip }}</td>
+      <td>{{ object.adresa }}</td>
+      <td>{{ object.kvadratura }}</td>
+      <td>{{ object.brojProstorija }}</td>
+      <td>
+        <label class="checkbox-container">
+          <input type="checkbox" (change)="selectObject(object)" class="check-input">
+          <span class="checkmark"></span>
+        </label>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="card-container">
+  <div class="card">
+    <div class="card">
+      <form [formGroup]="objekatForm" (ngSubmit)="onSubmit()">
+        <!-- ... -->
+        <div>
+          <label for="datumEnd">Datum Zavrsetka:</label>
+          <input type="text" id="datumEnd" formControlName="datumEnd">
+        </div>
+        <div>
+          <label for="datumEnd">Ime agencije:</label>
+          <input type="text" id="agencija" formControlName="agencija">
+        </div>
+        <button type="submit" [disabled]="objekatForm.invalid">Submit</button>
+      </form>
+    </div>
+
+
+  </div>
+</div>
+
+<div class="footer">
+
+  <div class="footer_contents"> <b> &#169; </b> Umetnost.rs</div>
+
+</div>
+
+</body>
+</html>
+

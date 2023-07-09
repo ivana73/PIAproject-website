@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-sm navbar-light bojaa">
+        <div class="collapse navbar-collapse col-md-9" id="navbarTogglerDemo03">
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/profilUcesnik">Profil</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/objektiMoji">Dodaj objekat</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/objektiSviMoji">Moji objekati</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/istorijaRadUcesnik">Istorija radionica</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/prijavljeneRad">Prijavljene radionice</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/aktuelneRad">Aktuelne radionice</a>
+            </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="odjaviSe()">Odjavi se</a>
+          </li>
+          </ul>
+        </div>
+</nav>
+
+
+<table class="object-table">
+  <thead>
+    <tr>
+      <th>Tip</th>
+      <th>Adresa</th>
+      <th>Kvadratura</th>
+      <th>Broj Prostorija</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let object of objects" class="table-row" (click)="onItemClick(object)">
+      <td>{{ object.tip }}</td>
+      <td>{{ object.adresa }}</td>
+      <td>{{ object.kvadratura }}</td>
+      <td>{{ object.brojProstorija }}</td>
+    </tr>
+  </tbody>
+</table>
+<div class="container">
+  <!-- Other content -->
+  <div class="centered">
+    <div *ngIf="isVisible">
+    <app-canvas></app-canvas>
+    </div>
+  </div>
+  <!-- Other content -->
+</div>
+<div class="footer">
+
+  <div class="footer_contents"> <b> &#169; </b> Umetnost.rs</div>
+
+</div>
+
+</body>
+</html>
+

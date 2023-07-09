@@ -35,6 +35,12 @@
 
                 <br>
                 <table class="tabela">
+                  <tr>
+                    <td>Profilna slika:</td>
+                    <td>
+                        <input type="file" (change)="onFileSelected($event)">
+                    </td>
+                </tr>
                     <tr>
                         <td>Ime:</td>
                         <td>
@@ -81,31 +87,33 @@
                         <td>Tip korisnika:</td>
                         <td>
                             <input type="radio" name="tip" value="učesnik" [(ngModel)]='tip'>Učesnik &nbsp;
-                            <input type="radio" name="tip" value="organizator" [(ngModel)]='tip'>Organizator &nbsp;
+                            <input type="radio" name="tip" value="agencija" [(ngModel)]='tip'>Agencija &nbsp;
                         </td>
                     </tr>
-                    <tr *ngIf='tip == "organizator"'>
-                        <td>Naziv organizacije:</td>
+                    <tr *ngIf='tip == "agencija"'>
+                        <td>Naziv agencije:</td>
                         <td>
                             <input type="text" [(ngModel)]='nazivOrganizacije'>
                         </td>
                     </tr>
-                    <tr *ngIf='tip == "organizator"'>
-                      <td>Adresa sedista organizacije:</td>
-                      <td>
-                          <input type="text" [(ngModel)]='adresaSedistaOrg'>
-                      </td>
-                  </tr>
-                  <tr *ngIf='tip == "organizator"'>
-                    <td>Adresa sedista organizacije:</td>
+                  <tr *ngIf='tip == "agencija"'>
+                    <td>Adresa sedista agencije:</td>
                     <td>
                         <input type="text" [(ngModel)]='adresaSedistaOrg'>
                     </td>
                 </tr>
-                <tr *ngIf='tip == "organizator"'>
-                  <td>Maticni broj organizacije:</td>
+                <tr *ngIf='tip == "agencija"'>
+                  <td>Maticni broj agencije:</td>
                   <td>
                       <input type="text" [(ngModel)]='matBrOrg'>
+                  </td>
+                </tr>
+                <tr>
+                <td></td>
+                <tr *ngIf='tip == "agencija"'>
+                  <td>Kratak opis:</td>
+                  <td>
+                      <input type="text" [(ngModel)]='kratakOpis'>
                   </td>
                 </tr>
                 <tr>

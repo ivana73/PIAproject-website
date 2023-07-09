@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-sm navbar-light bojaa">
+        <div class="collapse navbar-collapse col-md-9" id="navbarTogglerDemo03">
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/profilUcesnik">Profil</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/agencijaPosao">Pregledaj poslove</a>
+            </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="odjaviSe()">Odjavi se</a>
+          </li>
+          </ul>
+        </div>
+</nav>
+
+
+
+<table class="object-table">
+  <thead>
+    <tr>
+      <th>Klijenat</th>
+      <th>Agencija</th>
+      <th>Datum Zavrsetka</th>
+      <th>Status</th>
+      <th>Status radova</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let object of objects" class="table-row" [ngClass]="{ 'rejected-request': object.statusOfAcceptance === '0', 'accepted-request': object.statusOfAcceptance === '2' }" (click)="onItemClick(object)">
+      <td>{{ object.klijenat }}</td>
+      <td>{{ object.agencija }}</td>
+      <td>{{ object.datumZavrsetka }}</td>
+      <td *ngIf="object.statusOfAcceptance == '1'">Zatrazen</td>
+      <td *ngIf="object.statusOfAcceptance == '2'">Ceka se uplata novca</td>
+      <td *ngIf="object.statusOfAcceptance == '3'">Prihvacen</td>
+      <td *ngIf="object.statusOfWork == '1'">Zatrazeni radovi</td>
+      <td *ngIf="object.statusOfWork == '2'">Zapoceto sa radovima</td>
+      <td *ngIf="object.statusOfWork == '3'">Zavrseno sa radovima</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="column" style="width: 10%;" >
+  <div class="row" >
+   <h3>Filteri: </h3>
+  </div>
+  <div class="row" >
+    <button (click)="filterStatus('requested')">Zatrazeni </button>
+  </div>
+  <div class="row" >
+    <button (click)="filterStatus('started')">Zapoceti poslovi </button>
+  </div>
+  <div class="row" >
+    <button (click)="filterStatus('ended')">Zavrseni poslovi </button>
+  </div>
+</div>
+
+<div class="footer">
+
+  <div class="footer_contents"> <b> &#169; </b> Umetnost.rs</div>
+
+</div>
+
+</body>
+</html>
+

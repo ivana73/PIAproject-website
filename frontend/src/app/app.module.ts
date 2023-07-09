@@ -15,6 +15,19 @@ import { RadioniceDetailsComponent } from './radionice-details/radionice-details
 import { AktuelneRadioniceComponent } from './aktuelne-radionice/aktuelne-radionice.component';
 import { PrijavljeneRadioniceComponent } from './prijavljene-radionice/prijavljene-radionice.component';
 import { NeregistrovaniUserComponent } from './neregistrovani-user/neregistrovani-user.component';
+import { CanvasComponent } from './canvas/canvas.component';
+import { ObjektiMojiDetailsComponent } from './objekti-moji-details/objekti-moji-details.component';
+import { ObjektiMojiComponent } from './objekti-moji/objekti-moji.component';
+import { AgencijaComponent } from './agencija/agencija.component';
+import { AgencijeMojeComponent } from './agencije-moje/agencije-moje.component';
+import { AgencijeMojeDetaljnoComponent } from './agencije-moje-detaljno/agencije-moje-detaljno.component';
+import { KorisnikPosaoDodavanjeComponent } from './korisnik-posao-dodavanje/korisnik-posao-dodavanje.component';
+import { KorisnikPosaoPregledComponent } from './korisnik-posao-pregled/korisnik-posao-pregled.component';
+import { KorisnikPosaoDetaljnoComponent } from './korisnik-posao-detaljno/korisnik-posao-detaljno.component';
+import { AgencijaProfilComponent } from './agencija-profil/agencija-profil.component';
+import { AgencijaPosaoComponent } from './agencija-posao/agencija-posao.component';
+import { AgencijaPosaoDetaljnoComponent } from './agencija-posao-detaljno/agencija-posao-detaljno.component';
+import { CanvasBasicComponent } from './canvas-basic/canvas-basic.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +40,20 @@ import { NeregistrovaniUserComponent } from './neregistrovani-user/neregistrovan
     RadioniceDetailsComponent,
     AktuelneRadioniceComponent,
     PrijavljeneRadioniceComponent,
-    NeregistrovaniUserComponent
+    NeregistrovaniUserComponent,
+    CanvasComponent,
+    ObjektiMojiDetailsComponent,
+    ObjektiMojiComponent,
+    AgencijaComponent,
+    AgencijeMojeComponent,
+    AgencijeMojeDetaljnoComponent,
+    KorisnikPosaoDodavanjeComponent,
+    KorisnikPosaoPregledComponent,
+    KorisnikPosaoDetaljnoComponent,
+    AgencijaProfilComponent,
+    AgencijaPosaoComponent,
+    AgencijaPosaoDetaljnoComponent,
+    CanvasBasicComponent
   ],
   imports: [
     BrowserModule,

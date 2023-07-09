@@ -18,7 +18,12 @@ export class SigninComponent implements OnInit {
     this.porukaGreska = [];
 
   }
+  selectedFile: File;
+  defaultProfileImage: string = 'assets/profile.jpg';
 
+  onFileChange(event) {
+    this.selectedFile = event.target.files[0];
+  }
 
   syteKey: string;
   ime: string;
@@ -33,11 +38,44 @@ export class SigninComponent implements OnInit {
   nazivOrganizacije: string;
   adresaSedistaOrg: string;
   matBrOrg: number;
+  kratakOpis: string;
   odobren: number;
   slika: string;
   porukaGreska: string[] = [];
 
-  porukaSlika:string;
+
+  onFileSelected(event){
+    if(event.target.files[0].type != 'image/jpg' && event.target.files[0].type != 'image/png' && event.target.files[0].type != 'image/jpeg'){
+     this.porukaGreska.push("Slika nije ispravnog formata.");
+    } else {
+        const reader = new FileReader();
+        reader.onload = (e: any) => {
+            const image = new Image();
+            image.src = event.target.result;
+            image.onload = () => {
+
+                const img_height = image.height;
+                const img_width = image.width;
+                console.log(img_height)
+                if(img_width < 100 || img_width > 300 || img_height < 100 || img_height > 300){
+                  this.porukaGreska.push("Slika nije dobrih dimenzija.");
+                }
+            }
+          }
+      }
+      var file = event.target.files[0];
+
+      if (file) {
+          var reader = new FileReader();
+          reader.onload =this._handleReaderLoaded.bind(this);
+          reader.readAsBinaryString(file);
+      }
+  }
+
+  _handleReaderLoaded(readerEvt) {
+    var binaryString = readerEvt.target.result;
+    this.slika= btoa(binaryString);
+  }
 
 
   register(){
@@ -67,9 +105,6 @@ export class SigninComponent implements OnInit {
           if(/[A-Z]/.test(this.password) == false) {
             this.porukaGreska.push("Lozinka treba da ima minimalno 1 veliko slovo.")
           }
-          if(/[0-9]/.test(this.password) == false) {
-            this.porukaGreska.push("Lozinka treba da ima minimalno 1 veliko slovo.")
-          }
           if(/[!@#\$%\^&\*\(\)_\+\-=]/.test(this.password) == false) {
             this.porukaGreska.push("Lozinka treba da ima minimalno 1 specijalni karakter.")
           }
@@ -87,12 +122,28 @@ export class SigninComponent implements OnInit {
           }
           if(this.porukaGreska.length == 0) {
 
+
+            let imagePath = '';
+
+            if (this.selectedFile) {
+              this.uploadFile(this.selectedFile)
+                .then((response) => {
+                  imagePath = response.imagePath;
+                })
+                .catch((error) => {
+                  console.error('Greška prilikom slanja datoteke:', error);
+                });
+            } else {
+              imagePath = this.defaultProfileImage;
+            }
+
+
             this.registracijaServis.registerUser(this.ime, this.prezime, this.username,
               this.password, this.passwordPotvrda, this.telefon,
-              this.mejl, this.tip, this.nazivOrganizacije, this.adresaSedistaOrg, this.matBrOrg, this.odobren, this.slika).subscribe((resp)=>{
+              this.mejl, this.tip, this.nazivOrganizacije, this.adresaSedistaOrg, this.matBrOrg, this.odobren, this.slika, this.kratakOpis).subscribe((resp)=>{
                if(resp['message']=='user added'){
-                localStorage.setItem('user',JSON.stringify(this));
-                 this.router.navigate(['/user']);
+                // localStorage.setItem('user',JSON.stringify(this));
+                this.router.navigate(['']);
                }else{
                 this.porukaGreska.push(resp['message']);
                }
@@ -100,8 +151,14 @@ export class SigninComponent implements OnInit {
           }
 
         }
-
-
+  }
+  uploadFile(file: File): Promise<any> {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        const imagePath = 'path/to/uploaded/image.jpg';
+        resolve({ imagePath });
+      }, 2000);
+    });
   }
 
   uspesno:number=0;

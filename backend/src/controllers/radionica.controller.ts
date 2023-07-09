@@ -1,5 +1,6 @@
 import * as express from 'express';
-import Radionica from '../model/radionica';
+import Radionica from '../model/agencija';
+import User from '../model/user'
 
 export class RadionicaController {
 
@@ -40,7 +41,7 @@ export class RadionicaController {
         let username = req.body.username;
         let komentar = req.body.komentar;
 
-        Radionica.findOneAndUpdate({'_id':idRadionice},{$push: {'komentari': komentar}},(err, radioniceAkc)=>{
+        User.findOneAndUpdate({'_id':idRadionice},{$push: {'komentari': komentar}},(err, radioniceAkc)=>{
                 if(err) console.log(err);
                 else {
                     res.json('added');

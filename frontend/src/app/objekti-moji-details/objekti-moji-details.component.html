@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <nav class="navbar navbar-expand-sm navbar-light bojaa">
+    <div class="collapse navbar-collapse col-md-9" id="navbarTogglerDemo03">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/profilUcesnik">Profil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/objektiMoji">Dodaj objekat</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/objektiSviMoji">Moji objekati</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/istorijaRadUcesnik">Istorija radionica</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/prijavljeneRad">Prijavljene radionice</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/aktuelneRad">Aktuelne radionice</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="odjaviSe()">Odjavi se</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="card-container">
+    <div class="card">
+      <h2>Osnovne informacije:</h2>
+      <form [formGroup]="objekatForm" (ngSubmit)="onSubmit()">
+        <!-- Form inputs and controls -->
+        <div>
+          <label for="tip">Tip:</label>
+          <input type="text" id="tip" formControlName="tip" />
+        </div>
+        <div>
+          <label for="adresa">Adresa:</label>
+          <input type="text" id="adresa" formControlName="adresa" />
+        </div>
+        <div>
+          <label for="kvadratura">Kvadratura:</label>
+          <input type="number" id="kvadratura" formControlName="kvadratura" />
+        </div>
+        <div>
+          <label for="brojProstorija">Broj prostorija:</label>
+          <input type="number" id="brojProstorija" formControlName="brojProstorija" />
+        </div>
+        <button type="submit" [disabled]="objekatForm.invalid">Submit</button>
+      </form>
+    </div>
+
+    <div class="card">
+      <h2>Prostorije: </h2>
+      <div class="canvas-container">
+        <app-canvas-basic></app-canvas-basic>
+      </div>
+    </div>
+  </div>
+  <input type="file" (change)="onFileSelected($event)" />
+
+  <div class="footer">
+    <div class="footer_contents"> <b> &#169; </b> Umetnost.rs</div>
+  </div>
+
+</body>
+</html>

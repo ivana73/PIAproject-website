@@ -14,13 +14,19 @@
               <a class="nav-link" routerLink="/profilUcesnik">Profil</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="/istorijaRadUcesnik">Istorija radionica</a>
+              <a class="nav-link" routerLink="/objektiMoji">Dodaj objekat</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="/prijavljeneRad">Prijavljene radionice</a>
+              <a class="nav-link" routerLink="/objektiSviMoji">Moji objekati</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="/aktuelneRad">Aktuelne radionice</a>
+              <a class="nav-link" routerLink="/agencije">Agencije</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/posaoDodavanje">Dodaj posao</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/posaoPregled">Pregledaj posao</a>
             </li>
           <li class="nav-item">
             <a class="nav-link" (click)="odjaviSe()">Odjavi se</a>
@@ -28,16 +34,19 @@
           </ul>
         </div>
 </nav>
+<div class="subBody" style="position: relative;">
 
+<img *ngIf='korisnik.slika != null' [src]="'data:image/png;base64,' + defaultProfileImage" style="width: 110px; height: 90px">
+<img *ngIf='korisnik.slika == null' [src]="defaultProfileImage" style="width: 110px; height: 90px">
+</div>
+
+<div class="subBody" style="position: relative;">
 
 <div class="container" style="width: 50vh; display: block; justify-content: center;">
 <fieldset *ngIf='flagZaIzmenu == 1' style="width: 50vh; justify-content: center; margin: auto; ">
   <div >
 <!-- Form Name -->
 <legend>Profil</legend>
-
-<!-- Text input-->
-
 <div class="form-group">
   <br>
   <table class="tabela">
@@ -81,7 +90,9 @@
 </div>
 </fieldset>
 </div>
+</div>
 
+<div class="subBody" style="position: relative;">
 
 <div *ngIf='flagZaIzmenu == 0'>
   <fieldset style="width: 50vh; justify-content: center; margin: auto; background:rgba(249, 249, 197, 0.655);">
@@ -106,7 +117,28 @@
   <button (click)="change()">Promeni informacije profila</button>
 </fieldset>
 </div>
+</div>
 
+<div class="subBody" style="position: relative;">
+
+<form (ngSubmit)="changePassword()">
+  <div>
+    <label for="oldPassword">Stara lozinka:</label>
+    <input type="password" name="oldPassword" [(ngModel)]="oldPassword" required>
+  </div>
+  <div>
+    <label for="newPassword">Nova lozinka:</label>
+    <input type="password" name="newPassword" [(ngModel)]="newPassword" required>
+  </div>
+  <div>
+    <label for="confirmPassword">Potvrdi novu lozinku:</label>
+    <input type="password" name="confirmPassword" [(ngModel)]="confirmPassword" required>
+  </div>
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+  <button type="submit">Promeni lozinku</button>
+</form>
+
+</div>
 <div class="footer">
 
   <div class="footer_contents"> <b> &#169; </b> Umetnost.rs</div>
@@ -115,67 +147,3 @@
 
 </body>
 </html>
-
-
-
-
-<!-- <div class="container-fluid">
-  <div class="row">
-    <div class="col-md-12">
-      <br> -->
-      <!-- <h3>Filter:</h3>
-      <hr>
-      <span *ngFor="let greska of porukaOgreski" style="color:red;">{{greska}}</span>
-      <table class="tabela center">
-        <tr>
-          <td>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tip:
-            <select name="" id="" class="rounded" [(ngModel)]="tipNekretnine">
-              <option value="stan">Stan</option>
-              <option value="kuca">Kuca</option>
-              <option value="vikendica">Vikendica</option>
-              <option value="lokal">Lokal</option>
-              <option value="magacin">Magacin</option>
-            </select>
-          </td>
-          <td class="lokacija">
-            Lokacija:
-            <input type="text" placeholder="grad" class="rounded" [(ngModel)]="grad"> / <input type="text" placeholder="opstina" class="rounded" [(ngModel)]="opstina"> / <input type="text" placeholder="mikro lok." class="rounded" [(ngModel)]="mikrolokacija">
-          </td>
-          <td class="cenaKvadratura">
-            Cena DO:
-            <input type="number" class="rounded" placeholder="€" [(ngModel)]="cenaDO">
-          </td>
-          <td class="cenaKvadratura">
-            Kvadratura OD:
-            <input type="number" class="rounded" placeholder="m²" [(ngModel)]="kvadraturaOD">
-          </td>
-          <td>
-            Broj soba:
-            <select name="" id="" class="rounded" [(ngModel)]="brojSoba">
-              <option value="1">1</option>
-              <option value="1.5">1.5</option>
-              <option value="2">2</option>
-              <option value="2.5">2.5</option>
-              <option value="3">3</option>
-              <option value="3.5">3.5</option>
-              <option value="4">4</option>
-              <option value="4.5">4.5</option>
-              <option value="5+">5+</option>
-            </select>
-          </td>
-          <td class="dugme">
-            <button class="btn btn-success rounded" (click)="filtriraj()">Pretrazi</button>
-          </td>
-        </tr>
-      </table>
-      <hr>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6" *ngFor='let nekretninaa of listaNekretnina | paginate: { itemsPerPage: 10, currentPage: p }'>
-      <app-nekretnine-details (click)="udjiUnekretninu(nekretninaa)" [nekretnina]='nekretninaa'></app-nekretnine-details>
-    </div>
-  </div>
-  <pagination-controls (pageChange)="p = $event" class="bottom"></pagination-controls>
-</div> -->

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-sm navbar-light bojaa">
+        <div class="collapse navbar-collapse col-md-9" id="navbarTogglerDemo03">
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/profilUcesnik">Profil</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/objektiMoji">Dodaj objekat</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/objektiSviMoji">Moji objekati</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/agencije">Agencije</a>
+            </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="odjaviSe()">Odjavi se</a>
+          </li>
+          </ul>
+        </div>
+</nav>
+
+<div class="column" style="width: 10%;" >
+  <div class="row" >
+   <h3>Order By </h3>
+  </div>
+  <div class="row" >
+    <button (click)="sortName()">Po nazivu </button>
+  </div>
+  <!-- <div class="row" >
+    <button (click)="sortDate()">Po datumu </button>
+  </div> -->
+  <div class="row" >
+    <button (click)="sortPlace()">Po mestu </button>
+  </div>
+  <!-- <div class="row" >
+    <button (click)="sortAbout()">Po opisu </button>
+  </div>
+  <div class="row" >
+    <button (click)="sortMore()">Po detaljnom opisu </button>
+  </div> -->
+</div>
+<div class="column" style="width: 50%; margin-left: 18%;">
+  <div class="row">
+    <table class="tabela">
+      <tr>
+          <td>Ime agencije:</td>
+          <td>
+              <input type="text" [(ngModel)]='poImenu'>
+          </td>
+      </tr>
+      <tr>
+          <td>Mesto:</td>
+          <td>
+              <input type="text" [(ngModel)]='poMestu'>
+          </td>
+      </tr>
+      <tr colspan="2">
+          <td></td>
+         <td><button class="btn btn-success rounded" style="margin-bottom: 40px;" (click)="searchRadionice()">Pretrazi</button></td>
+      </tr>
+      <ng-template #nowritersmssg>
+        No writers found.
+      </ng-template>
+    </table>
+    </div>
+    </div>
+
+
+<div class="row">
+  <div class="column" style="width: 70%; margin-left: 18%;">
+    <table border=1 frame=hsides rules=rows class="tabela" style="text-decoration: solid; display: block; " >
+      <div class="row" style="padding: 1%; display: inline-block;">
+      <tr *ngFor = 'let radionicaa of agencije'>
+          <h4>Agencija: {{radionicaa.nazivOrganizacije}} </h4>
+          <h4>{{radionicaa.adresaSedistaOrg}} </h4>
+          <button (click)="udjiUradionicu(radionicaa)"> Detalji </button>
+        </tr>
+      </div>
+    </table>
+    </div></div>
+<div class="footer">
+
+  <div class="footer_contents"> <b> &#169; </b> Umetnost.rs</div>
+
+</div>
+
+</body>
+</html>

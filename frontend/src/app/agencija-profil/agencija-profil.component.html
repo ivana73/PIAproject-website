@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-sm navbar-light bojaa">
+        <div class="collapse navbar-collapse col-md-9" id="navbarTogglerDemo03">
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/profilUcesnik">Profil</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/agencijaPosao">Pregledaj poslove</a>
+            </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="odjaviSe()">Odjavi se</a>
+          </li>
+          </ul>
+        </div>
+</nav>
+<div class="subBody" style="position: relative;">
+
+<img *ngIf='korisnik.slika != null' [src]="'data:image/png;base64,' + defaultProfileImage" style="width: 110px; height: 90px">
+<img *ngIf='korisnik.slika == null' [src]="defaultProfileImage" style="width: 110px; height: 90px">
+</div>
+
+<div class="subBody" style="position: relative;">
+
+<div class="container" style="width: 50vh; display: block; justify-content: center;">
+<fieldset *ngIf='flagZaIzmenu == 1' style="width: 50vh; justify-content: center; margin: auto; ">
+  <div >
+<!-- Form Name -->
+<legend>Profil</legend>
+<div class="form-group">
+  <br>
+  <table class="tabela">
+      <tr>
+          <td>Ime: </td>
+          <td>
+              <input type="text" placeholder={{korisnik.ime}} [(ngModel)]='ime'>
+          </td>
+      </tr>
+      <tr>
+          <td>Prezime:</td>
+          <td>
+              <input type="text" placeholder={{korisnik.prezime}} [(ngModel)]='prezime'>
+          </td>
+      </tr>
+      <tr>
+          <td>Kontakat telefon:</td>
+          <td>
+              <input type="text" placeholder={{korisnik.telefon}} [(ngModel)]='telefon' >
+          </td>
+      </tr>
+      <tr>
+          <td>Email:</td>
+          <td>
+              <input type="email" placeholder={{korisnik.mejl}} [(ngModel)]='mejl' >
+          </td>
+      </tr>
+      <tr>
+
+</tr>
+  </table>
+</div>
+<!-- Button -->
+<div class="form-group">
+<label class="col-md-4 control-label"></label>
+<div class="col-md-4">
+  <button (click)="updejtuj()">Promeni podatke</button>
+  <button (click)="cancel()">Odustani</button>
+</div>
+</div>
+</div>
+</fieldset>
+</div>
+</div>
+
+<div class="subBody" style="position: relative;">
+
+<div *ngIf='flagZaIzmenu == 0'>
+  <fieldset style="width: 50vh; justify-content: center; margin: auto; background:rgba(249, 249, 197, 0.655);">
+    <div class="rounded" style="text-align:center; background-color:rgb(236, 229, 229)" >
+      <span align="center" *ngFor="let poruka of porukaGreska" style="color:red">{{poruka}} <br> </span>
+  </div>
+  <!-- Form Name -->
+  <legend>Profil</legend>
+  <!-- Text input-->
+  <div >
+  <label class="col-md-4 control-label">Ime: {{korisnik.ime}}</label>
+  </div>
+  <div>
+  <label class="col-md-4 control-label" >Prezime: {{korisnik.prezime}}</label>
+  </div>
+  <div>
+  <label class="col-md-4 control-label" >Telefon: {{korisnik.telefon}}</label>
+  </div>
+  <div>
+  <label class="col-md-4 control-label" >Email: {{korisnik.mejl}}</label>
+  </div>
+  <button (click)="change()">Promeni informacije profila</button>
+</fieldset>
+</div>
+</div>
+
+<div class="subBody" style="position: relative;">
+
+<form (ngSubmit)="changePassword()">
+  <div>
+    <label for="oldPassword">Stara lozinka:</label>
+    <input type="password" name="oldPassword" [(ngModel)]="oldPassword" required>
+  </div>
+  <div>
+    <label for="newPassword">Nova lozinka:</label>
+    <input type="password" name="newPassword" [(ngModel)]="newPassword" required>
+  </div>
+  <div>
+    <label for="confirmPassword">Potvrdi novu lozinku:</label>
+    <input type="password" name="confirmPassword" [(ngModel)]="confirmPassword" required>
+  </div>
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+  <button type="submit">Promeni lozinku</button>
+</form>
+
+</div>
+<div class="footer">
+
+  <div class="footer_contents"> <b> &#169; </b> Umetnost.rs</div>
+
+</div>
+
+</body>
+</html>

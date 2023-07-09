@@ -5,24 +5,24 @@
   <div class="row" >
     <button (click)="sortName()">Po nazivu </button>
   </div>
-  <div class="row" >
+  <!-- <div class="row" >
     <button (click)="sortDate()">Po datumu </button>
-  </div>
+  </div> -->
   <div class="row" >
     <button (click)="sortPlace()">Po mestu </button>
   </div>
-  <div class="row" >
+  <!-- <div class="row" >
     <button (click)="sortAbout()">Po opisu </button>
   </div>
   <div class="row" >
     <button (click)="sortMore()">Po detaljnom opisu </button>
-  </div>
+  </div> -->
 </div>
 <div class="column" style="width: 50%; margin-left: 18%;">
   <div class="row">
     <table class="tabela">
       <tr>
-          <td>Ime radionice:</td>
+          <td>Ime agencije:</td>
           <td>
               <input type="text" [(ngModel)]='poImenu'>
           </td>
@@ -43,16 +43,23 @@
     </table>
     </div>
 
-  <table class="tabela">
-    <ng-container *ngFor='let radionicaa of aktuelneRadionice' >
-        <tr><td><h2>{{radionicaa.naziv}}</h2></td></tr>
-        <tr><td>{{radionicaa.naziv}}</td></tr>
-        <tr><td>{{radionicaa.datum}}</td></tr>
-        <tr><td>{{radionicaa.mesto}}</td></tr>
-        <tr><td>{{radionicaa.opis}}</td></tr>
-        <tr><td>{{radionicaa.detaljnije}}</td></tr>
+    <div class="column" style="width: 70%; margin-left: 18%;">
+      <table border=1 frame=hsides rules=rows class="tabela" style="text-decoration: solid; display: block; " >
+        <div class="row" style="padding: 1%; display: inline-block;">
+        <tr *ngFor = 'let radionicaa of agencije'>
+            <h4>Agencija: {{radionicaa.nazivOrganizacije}} </h4>
+            <h4>{{radionicaa.adresaSedistaOrg}} </h4>
+            <button (click)="udjiUradionicu(radionicaa)"> Detalji </button>
+          </tr>
+        </div>
+      </table>
+      </div>
+  <!-- <table class="tabela">
+    <ng-container *ngFor='let radionicaa of agencije' >
+        <tr><td><h2>{{radionicaa.username}}</h2></td></tr>
+        <tr><td>{{radionicaa.kratakOpis}}</td></tr>
     </ng-container>
-</table>
+</table> -->
 
 
 </div>

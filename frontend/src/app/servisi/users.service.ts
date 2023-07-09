@@ -23,9 +23,10 @@ export class UsersService {
   matBrOrg: number;
   odobren: number;
   slika: string;
+  kratakOpis: string;
 
   registerUser(ime, prezime, korisnickoIme, lozinka, potvrdaLozinke, kontaktTelefon,
-    imejl, tipKorisnika, nazivOrganizacije, adresaSedistaOrg, matBrOrg, odobren, slika){
+    imejl, tipKorisnika, nazivOrganizacije, adresaSedistaOrg, matBrOrg, odobren, slika, kratakOpis){
     const data={
       ime: ime,
       prezime: prezime,
@@ -39,7 +40,8 @@ export class UsersService {
       adresaSedistaOrg: adresaSedistaOrg,
       matBrOrg: matBrOrg,
       odobren: odobren,
-      slika: slika
+      slika: slika,
+      kratakOpis: kratakOpis
     }
 
     return this.http.post(`${this.uri}/users/register`, data);
@@ -53,5 +55,26 @@ export class UsersService {
 
     return this.http.post(`${this.uri}/login`, data);
   }
+  addComment(komentar, idRadionice) {
+    const data={
+      komentar: komentar,
+      idRadionice: idRadionice
+    }
+    return this.http.post(`${this.uri}/users/addComment`, data);
+  }
 
+  getComments(idRadionice) {
+    const data={
+      idRadionice: idRadionice
+    }
+    return this.http.post(`${this.uri}/users/getComments`, data);
+  }
+
+  changePassword(username, password) {
+    const data={
+      username: username,
+      password:password
+    }
+    return this.http.post(`${this.uri}/users/changePassword`, data);
+  }
 }

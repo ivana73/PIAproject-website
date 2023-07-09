@@ -4,4 +4,6 @@ export class Poruka{
   to: string;
   text: string;
   privateChat: boolean;
+  ocena: string;
+  slika:string;
 }

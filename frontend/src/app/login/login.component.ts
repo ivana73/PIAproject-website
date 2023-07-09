@@ -22,7 +22,11 @@ export class LoginComponent implements OnInit {
     this.usersServise.login(this.username, this.password).subscribe((user: User)=>{
       if(user){
         localStorage.setItem('user',JSON.stringify(user));
-         this.ruter.navigate(['/user']);
+        console.log(user)
+        if (user.tip=='učesnik')
+          this.ruter.navigate(['/user']);
+        else if (user.tip=='agencija')
+          this.ruter.navigate(['/agencija']);
       }
       else{
           this.porukaGreska.push("Neispravan username ili lozinka.")

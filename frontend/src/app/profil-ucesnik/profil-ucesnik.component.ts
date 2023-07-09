@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../models/user.model';
 import { UcesnikService } from '../servisi/ucesnik.service';
+import { UsersService } from '../servisi/users.service';
 
 @Component({
   selector: 'app-profil-ucesnik',
@@ -10,13 +11,18 @@ import { UcesnikService } from '../servisi/ucesnik.service';
 })
 export class ProfilUcesnikComponent implements OnInit {
 
-  constructor(private router: Router, private ucesnikService: UcesnikService) { }
+  constructor(private router: Router, private ucesnikService: UcesnikService, private userService: UsersService) { }
+  serverImageUrl: string;
+  defaultProfileImage: string = 'assets/profile.jpg';
+  korisnik:User;
 
   ngOnInit(): void {
     this.korisnik = JSON.parse(localStorage.getItem("user"));
     this.flagZaIzmenu = 0;
-  }
+    console.log(this.korisnik.slika)
+    if (this.korisnik.slika!= null) this.defaultProfileImage = this.korisnik.slika;
 
+  }
   odjaviSe(){
     localStorage.clear();
     this.router.navigate(['/']);
@@ -29,7 +35,6 @@ export class ProfilUcesnikComponent implements OnInit {
   this.flagZaIzmenu = 0;
   }
 
-  korisnik:User;
   // 0 je za samo prikaz informacija a 1 je za izmenu
   flagZaIzmenu: number=0;
   porukaOgreski: string[] = [];
@@ -43,6 +48,7 @@ export class ProfilUcesnikComponent implements OnInit {
   mejl: string;
   slika: string;
   porukaGreska: string[] = [];
+  imagePreview: string;
 
 
   updejtuj() {
@@ -77,39 +83,67 @@ export class ProfilUcesnikComponent implements OnInit {
       })
     }
   }
-  // filtriraj(){
-  //   this.listaNekretnina = [];
-  //   this.porukaOgreski = [];
-  //   if(this.tipNekretnine == undefined){
-  //     this.tipNekretnine = "";
-  //     this.porukaOgreski.push("Niste izabrali tip nekretnine.")
-  //   } else {
 
-  //     this.ucesnikService.filtrirajNekretnine(this.tipNekretnine, this.grad, this.opstina, this.mikrolokacija, this.cenaDO,
-  //       this.kvadraturaOD, this.brojSoba).subscribe((lista: Nekretnina[])=>{
-  //         this.listaNekretnina = lista;
-  //         for (let index = 0; index < this.listaNekretnina.length; index++) {
-  //           let lokalnaListaNekretnina = this.listaNekretnina.filter
-  //           (nekretnina=>nekretnina.grad.includes(this.listaNekretnina[index].grad)&&nekretnina.opstina.includes(this.listaNekretnina[index].opstina)
-  //           &&nekretnina.mikrolokacija.includes(this.listaNekretnina[index].mikrolokacija)&&nekretnina.tipNekretnine.includes(this.listaNekretnina[index].tipNekretnine));
-  //           let cnt = 0;
-  //           let ukupnaCena = 0;
-  //           for (let index2 = 0; index2 < lokalnaListaNekretnina.length; index2++) {
-  //             ukupnaCena += lokalnaListaNekretnina[index2].cena/lokalnaListaNekretnina[index2].kvadratura;
-  //               cnt += 1;
-  //           }
-  //           this.listaNekretnina[index].prosecna = ukupnaCena/cnt;
-  //         }
-  //         sessionStorage.setItem("listaNekretnina", JSON.stringify(this.listaNekretnina));
-  //         this.tipNekretnine = undefined;
-  //         this.grad  = undefined;
-  //         this.opstina  = undefined;
-  //         this.mikrolokacija = undefined;
-  //         this.cenaDO = undefined;
-  //         this.kvadraturaOD = undefined;
-  //         this.brojSoba = undefined;
-  //       })
+  oldPassword: string;
+  newPassword: string;
+  confirmPassword: string;
+  errorMessage: string;
 
-  //   }
-  // }
+
+  changePassword() {
+    // Provera da li je stara lozinka ispravna
+    if (!this.checkOldPassword()) {
+      this.errorMessage = 'Uneta stara lozinka nije ispravna.';
+      return;
+    }
+
+    // Provera da li su nova lozinka i potvrda lozinke iste
+    if (this.newPassword !== this.confirmPassword) {
+      this.errorMessage = 'Nova lozinka i potvrda lozinke se ne podudaraju.';
+      return;
+    }
+
+    // Provera formata nove lozinke (npr. minimalna dužina, specijalni karakteri, brojevi, slova, itd.)
+    if (!this.validatePasswordFormat(this.newPassword)) {
+      this.errorMessage = 'Nova lozinka nije u traženom formatu.';
+      return;
+    }
+
+    this.userService.changePassword(this.korisnik.username, this.newPassword).subscribe((resp)=>{
+       if(resp['message']=='user added'){
+        // localStorage.setItem('user',JSON.stringify(this));
+        this.router.navigate(['']);
+       }else{
+        this.porukaGreska.push(resp['message']);
+       }
+   })
+
+    this.odjaviSe();
+
+  }
+
+  checkOldPassword(): boolean {
+    return this.korisnik.password === this.oldPassword;
+  }
+
+  validatePasswordFormat(password: string): boolean {
+    if(/^[a-zA-Z]{1}/.test(this.newPassword) == false) {
+      return false;
+    }
+    if(this.newPassword.length < 8) {
+      return false;
+    }
+    if(/[A-Z]/.test(this.newPassword) == false) {
+      return false;
+    }
+    if(/[!@#\$%\^&\*\(\)_\+\-=]/.test(this.newPassword) == false) {
+      return false;
+    }
+
+    if(this.newPassword != this.confirmPassword){
+      return false;
+    }
+
+    return true;
+  }
 }

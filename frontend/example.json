@@ -1,0 +1,9 @@
+[
+  {
+    "username": "john",
+    "tip": "Apartment",
+    "adresa": "123 Main Street",
+    "kvadratura": 100,
+    "brojProstorija": 3
+  }
+]

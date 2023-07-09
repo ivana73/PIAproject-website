@@ -30,8 +30,11 @@ let User = new Schema({
     odobren: {type: Number},
     slika: {type: String},
     istorijaRadionica: {type: Array},
-    prijavljeneRadionice: {type: Array}
-
+    prijavljeneRadionice: {type: Array},
+    kratakOpis:{type: String},
+    komentari: {
+        type: Array
+    },
 });
 
 export default mongoose.model('User', User, 'users');

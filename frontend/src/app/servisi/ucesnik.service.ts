@@ -18,6 +18,10 @@ export class UcesnikService {
   tip: string;
   slika: string;
 
+  // addObject(username: string, tip: string, adresa: string, kvadratura: string, brojProstorija: string) {
+  //   throw new Error('Method not implemented.');
+  // }
+
   updateProfile(ime, prezime, korisnickoIme, kontaktTelefon,
     imejl, slika){
     const data={
@@ -26,7 +30,7 @@ export class UcesnikService {
       username: korisnickoIme,
       telefon: kontaktTelefon,
       mejl: imejl,
-      slika: slika
+      slika: slika,
     }
 
     return this.http.post(`${this.uri}/users/update`, data);
@@ -36,6 +40,11 @@ export class UcesnikService {
       datumDanasnji: new Date()
     }
     return this.http.post(`${this.uri}/radionica/getSveAktuelneRadionice`,data);
+  }
+  getSveAgencije() {
+    const data={
+    }
+    return this.http.post(`${this.uri}/users/getSveAgencije`,data);
   }
 
   getRadionicaByName(naziv){

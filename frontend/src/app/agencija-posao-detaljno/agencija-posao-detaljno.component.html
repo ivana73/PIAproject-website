@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* Add your CSS styles here */
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-sm navbar-light bojaa">
+    <div class="collapse navbar-collapse col-md-9" id="navbarTogglerDemo03">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/profilUcesnik">Profil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/agencijaPosao">Pregledaj poslove</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="odjaviSe()">Odjavi se</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <app-canvas></app-canvas>
+      </div>
+
+      <div class="col-md-6">
+        <div class="card">
+          <form *ngIf="tipFormulara == 'pregled za uplatu'" [formGroup]="objekatForm" (ngSubmit)="onSubmit()">
+            <!-- ... -->
+            <div>
+              <label for="novac">Novac za uplatu:</label>
+              <input type="text" id="novac" formControlName="novac">
+            </div>
+            <div>
+              <label for="status">Status:</label>
+              <select id="status" formControlName="status">
+                <option value="Odobreno">Odobreno</option>
+                <option value="Odbijeno">Odbijeno</option>
+              </select>
+              </div>
+            <button type="submit" [disabled]="objekatForm.invalid">Submit</button>
+          </form>
+          <form *ngIf="tipFormulara == 'promena objekta'" [formGroup]="objekatForm" (ngSubmit)="onSubmit()">
+            <!-- ... -->
+            <div>
+              <label for="novac">Novac za uplatu:</label>
+              <input type="text" id="novac" formControlName="novac">
+            </div>
+            <div>
+              <label for="status">Status:</label>
+              <select id="status" formControlName="status">
+                <option value="Odobreno">Odobreno</option>
+                <option value="Odbijeno">Odbijeno</option>
+              </select>
+              </div>
+            <button type="submit" [disabled]="objekatForm.invalid">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer_contents"> <b> &#169; </b> Umetnost.rs</div>
+  </div>
+</body>
+</html>

@@ -8,6 +8,7 @@ import userRouter from './routers/user.router';
 import { UserController } from './controllers/user.controller';
 import radionicaRouter from './routers/radionica.router';
 import radionicaAkcijaRouter from './routers/radionicaAkcija.router';
+import Objects from './model/objects'
 
 const app = express();
 
@@ -38,13 +39,21 @@ router.route('/login').post((req, res)=>{
 });
 
 router.route('/register').post((req, res)=>{
-    let u = new user(req.body);
+    let u = new user({'ime': req.body.ime, 
+                        'prezime': req.body.prezime,
+                        'username': req.body.username, 'password': req.body.password, 
+                        'telefon': req.body.telefon,
+                         'mejl': req.body.mejl, 'tip': req.body.tip, 'nazivOrganizacije': req.body.nazivOrganizacije, 
+                                    'adresaSedistaOrg': req.body.adresaSedistaOrg, 'matBrOrg': req.body.matBrOrg,
+                                    'odobren': req.body.odobren, 'slika':req.body.slika, 'kratakOpis': req.body.kratakOpis})
+                                
     u.save().then(u=>{
         res.status(200).json({'user':'ok'});
     }).catch(err=>{
         res.status(400).json({'user':'no'});
     })
 });
+
 
 router.use('/users', userRouter);
 router.use('/radionica', radionicaRouter);

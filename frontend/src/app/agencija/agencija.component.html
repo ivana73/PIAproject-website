@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-sm navbar-light bojaa">
+        <div class="collapse navbar-collapse col-md-9" id="navbarTogglerDemo03">
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/agencijaProfil">Profil</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/agencijaPosao">Pregledaj poslove</a>
+            </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="odjaviSe()">Odjavi se</a>
+          </li>
+          </ul>
+        </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+            <h2>Dobrodosli {{korisnik.ime}} !</h2>
+      <hr>
+  </div>
+</div>
+</div>
+
+<div class="footer">
+
+  <div class="footer_contents"> <b> &#169; </b> Umetnost.rs</div>
+
+</div>
+
+</body>
+</html>
+
+
+
+
+<!-- <div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <br> -->
+      <!-- <h3>Filter:</h3>
+      <hr>
+      <span *ngFor="let greska of porukaOgreski" style="color:red;">{{greska}}</span>
+      <table class="tabela center">
+        <tr>
+          <td>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tip:
+            <select name="" id="" class="rounded" [(ngModel)]="tipNekretnine">
+              <option value="stan">Stan</option>
+              <option value="kuca">Kuca</option>
+              <option value="vikendica">Vikendica</option>
+              <option value="lokal">Lokal</option>
+              <option value="magacin">Magacin</option>
+            </select>
+          </td>
+          <td class="lokacija">
+            Lokacija:
+            <input type="text" placeholder="grad" class="rounded" [(ngModel)]="grad"> / <input type="text" placeholder="opstina" class="rounded" [(ngModel)]="opstina"> / <input type="text" placeholder="mikro lok." class="rounded" [(ngModel)]="mikrolokacija">
+          </td>
+          <td class="cenaKvadratura">
+            Cena DO:
+            <input type="number" class="rounded" placeholder="€" [(ngModel)]="cenaDO">
+          </td>
+          <td class="cenaKvadratura">
+            Kvadratura OD:
+            <input type="number" class="rounded" placeholder="m²" [(ngModel)]="kvadraturaOD">
+          </td>
+          <td>
+            Broj soba:
+            <select name="" id="" class="rounded" [(ngModel)]="brojSoba">
+              <option value="1">1</option>
+              <option value="1.5">1.5</option>
+              <option value="2">2</option>
+              <option value="2.5">2.5</option>
+              <option value="3">3</option>
+              <option value="3.5">3.5</option>
+              <option value="4">4</option>
+              <option value="4.5">4.5</option>
+              <option value="5+">5+</option>
+            </select>
+          </td>
+          <td class="dugme">
+            <button class="btn btn-success rounded" (click)="filtriraj()">Pretrazi</button>
+          </td>
+        </tr>
+      </table>
+      <hr>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6" *ngFor='let nekretninaa of listaNekretnina | paginate: { itemsPerPage: 10, currentPage: p }'>
+      <app-nekretnine-details (click)="udjiUnekretninu(nekretninaa)" [nekretnina]='nekretninaa'></app-nekretnine-details>
+    </div>
+  </div>
+  <pagination-controls (pageChange)="p = $event" class="bottom"></pagination-controls>
+</div> -->
